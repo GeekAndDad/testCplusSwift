@@ -10,7 +10,8 @@ import Murmur
 @main
 struct testCplusSwift: ParsableCommand {
     mutating func run() throws {
-        print("Hello, world!")
+        print("Hello, world!  Let's call some C++ code from Swift!  🤪")
+		
 		let hashBits = 128
 		let hashBytes = hashBits / 8
 		var output : ContiguousArray<UInt8> = .init(repeating: 0, count: hashBytes)
@@ -19,7 +20,7 @@ struct testCplusSwift: ParsableCommand {
 		for i in UInt8(0)...UInt8(hashBytes-1) {
 			key[Int(i)] = i
 		}
-		print(output)
+		print("starting output buffer:  ", output)
 		withUnsafePointer(to: key)
 		{
 			key in
@@ -27,10 +28,10 @@ struct testCplusSwift: ParsableCommand {
 				buffer in
 				MurmurHash3_x64_128( key,
 									 Int32(hashBytes),
-									0,
+									 0,
 									 buffer.baseAddress)
 			}
 		}
-		print(output)
+		print("Hash output: ", output)
     }
 }
