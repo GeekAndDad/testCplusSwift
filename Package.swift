@@ -37,8 +37,6 @@ let package = Package(
 		)
 		, .target(name: "Murmur",
 				dependencies: []
-				// path: "Sources/Murmur"
-				// sources: ["Sources/Mumur/MurmurHash3.cpp"]
 		)
     ]
 )
